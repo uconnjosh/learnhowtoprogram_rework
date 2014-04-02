@@ -1,0 +1,74 @@
+<h3>User admin panel:</h3>
+
+<form class="form-inline smallWrapper" action="/admin/sections" method="post">
+  <label for="name">New Section: </label>
+  <input class="form-control" id="name" name="section[name]" type="text" placeholder="Section Name">
+  <button class="btn btn-primary" type="submit">add</button>
+</form>
+
+<br />
+
+<form class="form-inline smallWrapper" action="/admin/lessons" method="post">
+  <label for="name">New Lesson: </label>
+  <input class="form-control" id="name" name="lesson[name]" type="text" placeholder="Lesson Name">
+
+  <select class="form-control" id="sectionId" name="lesson[section_id]" type="number">
+    <% @sections.each do |section| %>
+      <option value="<%= section.id %>" ><%= section.name %></option>
+    <% end %>
+  </select>
+
+  <button class="btn btn-primary" type="submit">add</button>
+</form>
+
+<br />
+<ul class="nav nav-tabs">
+  <li class="active editTab"><a>Edit</a></li>
+  <li><a class="deleteTab">Delete</a></li>
+</ul>
+<div class="well">
+  <div class="deleteWrapper">
+    <h4>Click on a lesson to Delete it:<h4>
+      <ul>
+      <% @sections.each do |section| %>
+        <li><a data-method="delete" href="/admin/sections/<%= section.id %>"><%= section.name %></a></li>
+        <ul>
+          <% @lessons.each do |lesson| %>
+            <% if lesson.section_id == section.id %>
+              <li><a data-method="delete" href="/admin/lessons/<%= lesson.id %>"><%= lesson.name %></a></li>
+            <% end %>
+          <% end %>
+        </ul>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="editWrapper">
+    <h4>Click on a lesson to Edit it:<h4>
+      <ul>
+      <% @sections.each do |section| %>
+        <li><%= section.name %></li>
+        <ul>
+          <% @lessons.each do |lesson| %>
+            <% if lesson.section_id == section.id %>
+              <li><a data-method="get" href="/admin/lessons/<%= lesson.id %>"><%= lesson.name %></a></li>
+            <% end %>
+          <% end %>
+        </ul>
+      <% end %>
+    </ul>
+  </div>
+</div>
+<nav class="navbar navbar-fixed-bottom navbar-inverse" role="navigation">
+  <div class="container">
+    <div class="naviHeader">
+       <ul class="nav navbar-nav navbar-right">
+         <li><a href="/sections">table of contents</a></li>
+       </ul>
+      </div>
+  </div>
+</nav>
+
+
+
+

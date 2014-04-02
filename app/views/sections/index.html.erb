@@ -1,0 +1,25 @@
+<h3>Table of Contents:</h3>
+
+<ul>
+  <% @sections.each do |section| %>
+    <li> <%= section.name %> </li>
+    <ul>
+      <% @lessons.each do |lesson| %>
+        <% if lesson.section_id == section.id %>
+          <li><a href="/lessons/<%= lesson.id %>"><%= lesson.name %></a></li>
+        <% end %>
+      <% end %>
+    </ul>
+  <% end %>
+</ul>
+
+<nav class="navbar navbar-fixed-bottom navbar-inverse" role="navigation">
+  <div class="container">
+    <div class="naviHeader">
+       <ul class="nav navbar-nav navbar-right">
+         <li><a href="/sections">table of contents</a></li>
+       </ul>
+      </div>
+  </div>
+</nav>
+

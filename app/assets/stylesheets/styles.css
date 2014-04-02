@@ -1,0 +1,10 @@
+.wrapperAll {
+  padding: 25px;
+}
+
+.editWrapper {
+}
+
+.deleteWrapper {
+  display:none;
+}

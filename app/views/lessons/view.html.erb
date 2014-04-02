@@ -1,0 +1,17 @@
+<h3><%= @lesson.name %></h3>
+  <br>
+<p><%= @lesson.content %></p>
+
+<nav class="navbar navbar-fixed-bottom navbar-inverse" role="navigation">
+  <div class="container">
+    <div class="naviHeader">
+       <div class="nav navbar-nav navbar-left">
+         <li><a href="/lessons/<%= @pastStuff %>">previous lesson</a></li>
+         <li><a href="/lessons/<%= @nextStuff %>">next lesson</a></li>
+       </div>
+       <ul class="nav navbar-nav navbar-right">
+         <li><a href="/sections">table of contents</a></li>
+       </ul>
+      </div>
+  </div>
+</nav>
